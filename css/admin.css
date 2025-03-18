@@ -1,0 +1,787 @@
+/* Стили для админ-панели */
+
+/* Карточки пунктов меню админа */
+.admin-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.admin-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 15px;
+    cursor: pointer;
+    transition: all 0.3s var(--animation-bounce);
+    border: 1px solid var(--border-light);
+    position: relative;
+    overflow: hidden;
+    background: var(--card-bg);
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+    border-color: var(--purple-accent);
+}
+
+.admin-card:active {
+    transform: scale(0.97);
+}
+
+.admin-card-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: var(--purple-accent);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--purple-accent-gradient);
+    box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
+}
+
+.admin-card-icon svg {
+    stroke: white;
+    width: 28px;
+    height: 28px;
+}
+
+.admin-card-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: var(--text-bright);
+}
+
+.admin-card-desc {
+    font-size: 12px;
+    color: var(--tg-theme-hint);
+    line-height: 1.4;
+}
+
+/* Кнопка назад */
+.back-btn {
+    background: none;
+    color: var(--tg-theme-text);
+    font-size: 22px;
+    padding: 0;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.back-btn svg {
+    stroke: var(--tg-theme-text);
+}
+
+.exit-admin-btn {
+    display: flex;
+    align-items: center;
+    background-color: var(--purple-accent);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.exit-admin-btn svg {
+    margin-right: 6px;
+}
+
+/* Таблицы для админа */
+.table-container {
+    overflow-x: auto;
+    margin-top: 15px;
+    border-radius: var(--border-radius);
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-light);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--tg-theme-text);
+}
+
+.admin-table thead {
+    background-color: var(--purple-accent);
+}
+
+.admin-table th {
+    padding: 14px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 14px;
+    color: white;
+}
+
+.admin-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 14px;
+}
+
+.admin-table tbody tr:hover {
+    background-color: rgba(138, 127, 255, 0.05);
+}
+
+/* Список пользователей */
+.search-bar {
+    margin: 15px 0;
+    position: relative;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border-radius: var(--border-radius);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    color: var(--tg-theme-text);
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.search-bar input:focus {
+    border-color: var(--purple-accent);
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--tg-theme-hint);
+    pointer-events: none;
+}
+
+.user-list {
+    margin-top: 15px;
+}
+
+.user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    transition: transform 0.3s var(--animation-bounce), border-color 0.3s;
+}
+
+.user-item:hover {
+    border-color: var(--purple-accent);
+    transform: translateY(-2px);
+}
+
+.user-info {
+    flex: 1;
+}
+
+.user-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-bright);
+}
+
+.user-balance {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: var(--text-bright);
+}
+
+.add-coins-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-left: 10px;
+    background-color: var(--purple-accent);
+    box-shadow: 0 4px 8px rgba(108, 92, 231, 0.3);
+    transition: transform 0.2s;
+}
+
+.add-coins-btn svg {
+    stroke: white;
+}
+
+.add-coins-btn:active {
+    transform: scale(0.9);
+}
+
+/* Вкладки */
+.tabs {
+    display: flex;
+    margin: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    background-color: var(--card-bg);
+}
+
+.tab-btn {
+    background: rgba(108, 92, 231, 0.05);
+    color: var(--tg-theme-hint);
+    padding: 12px 15px;
+    flex: 1;
+    text-align: center;
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    color: white;
+    background-color: var(--purple-accent);
+    border-bottom: 2px solid var(--purple-accent);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Список товаров */
+.product-list {
+    margin-top: 15px;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: var(--border-radius);
+    transition: border-color 0.3s, transform 0.3s var(--animation-bounce);
+}
+
+.product-item:hover {
+    border-color: var(--purple-accent);
+    transform: translateY(-2px);
+}
+
+.product-list-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-details {
+    flex: 1;
+}
+
+.product-actions {
+    display: flex;
+}
+
+.edit-product-btn, .delete-product-btn {
+    background: none;
+    padding: 8px;
+    margin-left: 5px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.edit-product-btn {
+    color: var(--tg-theme-link);
+}
+
+.delete-product-btn {
+    color: var(--error-color);
+}
+
+.edit-product-btn:hover, .delete-product-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Список уровней */
+.level-list {
+    margin-top: 15px;
+}
+
+.level-item {
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: var(--border-radius);
+    transition: transform 0.3s var(--animation-bounce), border-color 0.3s;
+}
+
+.level-item:hover {
+    border-color: var(--purple-accent);
+    transform: translateY(-2px);
+}
+
+.level-name {
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.level-name svg {
+    margin-right: 8px;
+}
+
+.level-name.level-bronze {
+    background: var(--level-bronze-gradient);
+}
+
+.level-name.level-silver {
+    background: var(--level-silver-gradient);
+}
+
+.level-name.level-gold {
+    background: var(--level-gold-gradient);
+}
+
+.level-name.level-diamond {
+    background: var(--level-diamond-gradient);
+}
+
+.level-requirement {
+    margin-bottom: 15px;
+    color: var(--tg-theme-hint);
+}
+
+.edit-level-btn {
+    background-color: var(--purple-accent);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* Автоматические начисления */
+.auto-reward-card {
+    margin-bottom: 15px;
+    padding: 18px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: var(--border-radius);
+    transition: transform 0.3s var(--animation-bounce), border-color 0.3s;
+}
+
+.auto-reward-card:hover {
+    border-color: var(--purple-accent);
+    transform: translateY(-2px);
+}
+
+.auto-reward-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: var(--text-bright);
+    display: flex;
+    align-items: center;
+}
+
+.auto-reward-title svg {
+    margin-right: 8px;
+    stroke: var(--purple-accent);
+}
+
+.auto-reward-desc {
+    color: var(--tg-theme-hint);
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.auto-reward-settings {
+    background-color: rgba(108, 92, 231, 0.05);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.setting-row:last-child {
+    margin-bottom: 0;
+}
+
+.coin-amount-input {
+    width: 120px;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: var(--tg-theme-bg-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--tg-theme-text);
+}
+
+/* Переключатель */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--tg-theme-button);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Формы в модальных окнах */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--tg-theme-bg-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--tg-theme-text);
+    font-size: 14px;
+}
+
+textarea.form-control {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.user-name-display {
+    font-weight: 500;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+}
+
+.image-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preview-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Кнопки в модальных окнах */
+.cancel-btn {
+    background-color: transparent;
+    border: 1px solid var(--tg-theme-button);
+    color: var(--tg-theme-button);
+    margin-right: 10px;
+}
+
+.confirm-btn {
+    background-color: var(--tg-theme-button);
+}
+
+/* Кнопка добавления продукта */
+.add-product-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 18px;
+}
+
+/* Кнопка редактирования */
+.edit-btn {
+    background: none;
+    color: var(--tg-theme-link);
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid var(--tg-theme-link);
+}
+
+/* Анимации и эффекты для админ-панели */
+.fade-in {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.2s ease forwards;
+}
+
+.slide-in {
+    animation: slideIn 0.3s var(--animation-bounce) forwards;
+}
+
+.slide-out {
+    animation: slideOut 0.2s ease forwards;
+}
+
+.pulse {
+    animation: pulse 0.3s ease-in-out;
+}
+
+.highlight {
+    animation: highlight 0.5s ease;
+}
+
+.saved {
+    animation: saved 0.5s ease;
+}
+
+/* Ripple-эффект для кнопок */
+.ripple {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 0.5s linear;
+    pointer-events: none;
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: var(--purple-accent);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    transition: transform 0.3s var(--animation-bounce), opacity 0.3s ease;
+    font-weight: 500;
+}
+
+.notification.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Keyframes для анимаций */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes highlight {
+    0% {
+        background-color: rgba(108, 92, 231, 0.3);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+@keyframes saved {
+    0% {
+        background-color: rgba(46, 213, 115, 0.3);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Стили для модальных окон */
+.modal {
+    transition: opacity 0.3s;
+}
+
+.modal.opening .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 0.3s var(--animation-bounce), opacity 0.2s ease;
+}
+
+.modal.closing .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Стили для редактируемой таблицы */
+.editable-cell {
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.editable-cell:hover {
+    background-color: rgba(108, 92, 231, 0.1);
+}
+
+.editable-cell:focus {
+    outline: 2px solid var(--purple-accent);
+    background-color: rgba(108, 92, 231, 0.05);
+}
+
+.add-row-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--purple-accent);
+    color: white;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.add-row-btn:hover {
+    background-color: #574dcb;
+}
+
+.add-row-btn svg {
+    margin-right: 8px;
+}
+
+/* Анимация перехода страниц */
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s;
+} 
