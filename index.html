@@ -8,555 +8,519 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <div id="app">
-        <!-- Админ-кнопка -->
-        <a href="admin.html" class="admin-icon" title="Адмін-панель">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
-        </a>
-        
-        <!-- Личный кабинет пользователя -->
-        <div id="profile" class="page active">
-            <div class="appbar">
-                <div class="profile-container">
-                    <div class="token-container">
-                        <div class="token-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="12" y1="8" x2="12" y2="12"></line>
-                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    <div class="app-container">
+        <div id="app">
+            <!-- Личный кабинет пользователя -->
+            <div id="profile" class="page active">
+                <div class="appbar">
+                    <div class="profile-container">
+                        <div class="profile-header">
+                            <div class="token-container">
+                                <div class="token-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                    </svg>
+                                </div>
+                                <div class="token-info">
+                                    <div class="token-amount">1250</div>
+                                    <div class="token-label"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="user-container">
+                                <div class="user-info">
+                                    <div class="user-name">Солус КоІнов</div>
+                                </div>
+                                <div class="user-avatar">
+                                    <img src="img/1.png" alt="Аватар пользователя">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Интегрированный прогресс-бар -->
+                        <div class="integrated-level-progress" id="level-info-trigger">
+                            <div class="integrated-progress-labels">
+                                <div class="progress-label">Бронзовий</div>
+                                <div class="progress-label">Срібний</div>
+                            </div>
+                            <div class="integrated-progress-bar">
+                                <div class="integrated-progress-fill" style="width: 65%;"></div>
+                            </div>
+                            <div class="integrated-progress-text">
+                                <span>1250 SC</span>
+                                <span>2000 SC</span>
+                            </div>
+                            <div class="progress-indicator">
+                                <span>65% до наступного рівня</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-content">
+                    <div class="transaction-header">
+                        <h2>Історія транзакцій</h2>
+                        <button class="send-button" id="transfer-trigger">Переказати</button>
+                    </div>
+                    
+                    <div class="transaction-list">
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-title">Річниця в компанії</div>
+                                <div class="transaction-date">15.05.2023</div>
+                            </div>
+                            <div class="transaction-amount positive">+500 SC</div>
+                        </div>
+                        
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-title">Бонус за проект</div>
+                                <div class="transaction-date">01.06.2023</div>
+                            </div>
+                            <div class="transaction-amount positive">+300 SC</div>
+                        </div>
+                        
+                        <div class="view-all-container">
+                            <button class="view-all-button" id="view-all-transactions">
+                                <span>Переглянути всі</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Маркетплейс -->
+            <div id="marketplace" class="page">
+                <div class="appbar">
+                    <div class="search-container">
+                        <input type="text" class="marketplace-search" placeholder="Пошук товарів...">
+                        <div class="search-icon-container">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
                         </div>
-                        <div class="token-info">
-                            <div class="token-amount">1250 SC</div>
-                            <div class="token-label">Solus Coins</div>
-                        </div>
                     </div>
-                    
-                    <div class="user-container">
-                        <div class="user-info">
-                            <div class="user-name">Солус Коінов</div>
-                            <div class="user-level level-bronze">Бронзовий</div>
-                        </div>
-                        <div class="user-avatar">
-                            <img src="img/1.png" alt="Аватар пользователя">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="level-progress-container">
-                <div class="level-progress-title">Прогрес рівня</div>
-                <div class="progress-labels">
-                    <div class="progress-label">Бронзовий</div>
-                    <div class="progress-label">Срібний</div>
-                </div>
-                <div class="level-progress">
-                    <div class="progress-fill" style="width: 65%;"></div>
-                </div>
-                <div class="progress-text">
-                    <span>1250 SC</span>
-                    <span>2000 SC</span>
-                </div>
-            </div>
-            
-            <div class="transaction-header">
-                <h2>Історія транзакцій</h2>
-                <button class="send-button" id="transfer-trigger">Переказати</button>
-            </div>
-            
-            <div class="transaction-list">
-                <div class="transaction-item">
-                    <div class="transaction-info">
-                        <div class="transaction-title">Річниця в компанії</div>
-                        <div class="transaction-date">15.05.2023</div>
-                    </div>
-                    <div class="transaction-amount positive">+500 SC</div>
-                </div>
-                
-                <div class="transaction-item">
-                    <div class="transaction-info">
-                        <div class="transaction-title">Придбання: Футболка Solus</div>
-                        <div class="transaction-date">20.05.2023</div>
-                    </div>
-                    <div class="transaction-amount negative">-200 SC</div>
-                </div>
-                
-                <div class="transaction-item">
-                    <div class="transaction-info">
-                        <div class="transaction-title">Бонус за проект</div>
-                        <div class="transaction-date">01.06.2023</div>
-                    </div>
-                    <div class="transaction-amount positive">+300 SC</div>
-                </div>
-                
-                <div class="transaction-item">
-                    <div class="transaction-info">
-                        <div class="transaction-title">День народження</div>
-                        <div class="transaction-date">10.07.2023</div>
-                    </div>
-                    <div class="transaction-amount positive">+400 SC</div>
-                </div>
-                
-                <div class="transaction-item">
-                    <div class="transaction-info">
-                        <div class="transaction-title">Придбання: Кружка</div>
-                        <div class="transaction-date">15.07.2023</div>
-                    </div>
-                    <div class="transaction-amount negative">-150 SC</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Маркетплейс -->
-        <div id="marketplace" class="page">
-            <div class="appbar">
-                <div class="appbar-title">Маркетплейс</div>
-                <div class="cart-icon" id="cart-button">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                    </svg>
-                    <span class="cart-badge">0</span>
-                </div>
-            </div>
-            
-            <div class="search-container">
-                <input type="text" class="marketplace-search" placeholder="Пошук товарів...">
-                <div class="search-icon-container">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </div>
-            </div>
-            
-            <div class="filter-section">
-                <div class="filter-row">
-                    <span class="filter-title">Сортування:</span>
-                    <select id="sort-select">
-                        <option value="price-asc">За ціною (від дешевих)</option>
-                        <option value="price-desc">За ціною (від дорогих)</option>
-                    </select>
-                </div>
-                <div class="filter-row">
-                    <span class="filter-title">Показати доступні мені:</span>
-                    <input type="checkbox" id="available-only">
-                </div>
-            </div>
-            
-            <div class="product-grid">
-                <div class="product-card level-bronze" data-id="1" id="product-details-trigger">
-                    <div class="product-level level-bronze">Бронзовий</div>
-                    <img src="img/2.png" alt="Футболка Solus" class="product-image">
-                    <div class="product-info">
-                        <div class="product-name">Футболка Solus</div>
-                        <div class="product-price">
-                            <div class="price">200</div>
-                            <button class="add-to-cart-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card level-bronze" data-id="2">
-                    <div class="product-level level-bronze">Бронзовий</div>
-                    <img src="img/3.png" alt="Кружка брендована" class="product-image">
-                    <div class="product-info">
-                        <div class="product-name">Кружка брендована</div>
-                        <div class="product-price">
-                            <div class="price">150</div>
-                            <button class="add-to-cart-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card level-silver" data-id="3">
-                    <div class="product-level level-silver">Срібний</div>
-                    <img src="img/4.png" alt="Рюкзак" class="product-image">
-                    <div class="product-info">
-                        <div class="product-name">Рюкзак</div>
-                        <div class="product-price">
-                            <div class="price">800</div>
-                            <button class="add-to-cart-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card level-gold" data-id="4">
-                    <div class="product-level level-gold">Золотий</div>
-                    <img src="img/5.png" alt="Павербанк 10000 mAh" class="product-image">
-                    <div class="product-info">
-                        <div class="product-name">Павербанк 10000 mAh</div>
-                        <div class="product-price">
-                            <div class="price">1200</div>
-                            <button class="add-to-cart-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card level-diamond" data-id="5">
-                    <div class="product-level level-diamond">Діамантовий</div>
-                    <img src="img/6.png" alt="Навушники бездротові" class="product-image">
-                    <div class="product-info">
-                        <div class="product-name">Навушники бездротові</div>
-                        <div class="product-price">
-                            <div class="price">2500</div>
-                            <button class="add-to-cart-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card level-gold" data-id="6">
-                    <div class="product-level level-gold">Золотий</div>
-                    <img src="img/1.png" alt="Сертифікат на тренінг" class="product-image">
-                    <div class="product-info">
-                        <div class="product-name">Сертифікат на тренінг</div>
-                        <div class="product-price">
-                            <div class="price">1500</div>
-                            <button class="add-to-cart-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Информация -->
-        <div id="info" class="page">
-            <div class="appbar">
-                <div class="appbar-title">Інформація</div>
-            </div>
-            
-            <div class="accordion">
-                <div class="accordion-item active" id="about-trigger">
-                    <div class="accordion-header">
-                        <span>Що таке Солус Коін</span>
-                        <span class="toggle-icon">▼</span>
-                    </div>
-                    <div class="accordion-content">
-                        <p>"Solus Coin" у контексті внутрішньої валюти для гейміфікації компанії, ймовірно, є корпоративною ініціативою, яка використовується для мотивації співробітників, заохочення певної поведінки або стимулювання продуктивності.</p>
-                    </div>
-                </div>
-                
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <span>Рівні користувачів</span>
-                        <span class="toggle-icon">▲</span>
-                    </div>
-                    <div class="accordion-content">
-                        <p>У системі є чотири рівні користувачів:</p>
-                        <ul>
-                            <li><span style="color: var(--level-bronze);">Бронзовий</span> – від 0 до 2000 SC</li>
-                            <li><span style="color: var(--level-silver);">Срібний</span> – від 2000 до 5000 SC</li>
-                            <li><span style="color: var(--level-gold);">Золотий</span> – від 5000 до 10000 SC</li>
-                            <li><span style="color: var(--level-diamond);">Діамантовий</span> – від 10000 SC</li>
-                        </ul>
-                        <p>Певні товари доступні лише на відповідних рівнях.</p>
-                    </div>
-                </div>
-                
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <span>Як отримати SC</span>
-                        <span class="toggle-icon">▲</span>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Є багато способів отримати Solus Coins:</p>
-                        <ul>
-                            <li>Виконання проектів – від 300 до 1000 SC</li>
-                            <li>День народження – 400 SC</li>
-                            <li>Річниця в компанії – 500 SC за кожен рік</li>
-                            <li>Участь у внутрішніх заходах – від 100 до 500 SC</li>
-                            <li>Подання ідей та пропозицій – від 50 до 200 SC</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card" style="margin-top: 30px;">
-                <div class="feedback-button" id="feedback-trigger">
-                    <span class="icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            <line x1="9" y1="9" x2="15" y2="9"></line>
-                            <line x1="9" y1="13" x2="15" y2="13"></line>
+                    <div class="filter-icon" id="filter-trigger">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="21" x2="4" y2="14"></line>
+                            <line x1="4" y1="10" x2="4" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12" y2="3"></line>
+                            <line x1="20" y1="21" x2="20" y2="16"></line>
+                            <line x1="20" y1="12" x2="20" y2="3"></line>
+                            <line x1="1" y1="14" x2="7" y2="14"></line>
+                            <line x1="9" y1="8" x2="15" y2="8"></line>
+                            <line x1="17" y1="16" x2="23" y2="16"></line>
                         </svg>
-                    </span>
-                    <span>Залишити Фідбек</span>
+                    </div>
+                    <div class="cart-icon" id="cart-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-badge">0</span>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Нижняя навигация -->
-        <div class="bottom-nav">
-            <div class="nav-button active" data-target="profile">
-                <div class="icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
+                
+                <!-- Скрываем отображение текстовых фильтров, но сохраняем выпадающее меню -->
+                <div class="filter-dropdown" id="filter-dropdown" style="display: none;">
+                    <div class="filter-row">
+                        <span class="filter-title">Сортування:</span>
+                        <select class="filter-select" id="sort-select">
+                            <option value="price-asc">За ціною (від дешевих)</option>
+                            <option value="price-desc">За ціною (від дорогих)</option>
+                        </select>
+                    </div>
+                    <div class="filter-row">
+                        <span class="filter-title">Показати доступні мені</span>
+                        <input type="checkbox" class="filter-checkbox" id="available-only">
+                    </div>
                 </div>
-                <div class="label">Профіль</div>
-            </div>
-            <div class="nav-button" data-target="marketplace">
-                <div class="icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <path d="M16 10a4 4 0 0 1-8 0"></path>
-                    </svg>
-                </div>
-                <div class="label">Маркет</div>
-            </div>
-            <div class="nav-button" data-target="info">
-                <div class="icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="16" x2="12" y2="12"></line>
-                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                    </svg>
-                </div>
-                <div class="label">Інфо</div>
-            </div>
-            <div class="nav-button" id="admin-button">
-                <div class="icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                    </svg>
-                </div>
-                <div class="label">Адмін</div>
-            </div>
-        </div>
-        
-        <!-- Модальное окно для деталей товара -->
-        <div class="modal" id="product-details-modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title">Деталі товару</div>
-                    <div class="modal-close">&times;</div>
-                </div>
-                <div class="modal-body">
-                    <div class="product-details-content">
-                        <img src="img/2.png" class="product-details-main-img" id="main-product-image" alt="Товар">
-                        
-                        <div class="product-details-thumbnails">
-                            <img src="img/2.png" class="product-thumbnail active" data-img="img/2.png" alt="Вигляд 1">
-                            <img src="img/3.png" class="product-thumbnail" data-img="img/3.png" alt="Вигляд 2">
-                            <img src="img/4.png" class="product-thumbnail" data-img="img/4.png" alt="Вигляд 3">
-                        </div>
-                        
-                        <h2 class="product-details-name">Футболка Solus</h2>
-                        <div class="product-details-level level-bronze">Бронзовий рівень</div>
-                        <div class="product-details-price">200 SC</div>
-                        
-                        <div class="product-details-description">
-                            <p>Стильна футболка з логотипом компанії Solus.</p>
-                            <p>Характеристики:</p>
-                            <ul>
-                                <li>100% бавовна</li>
-                                <li>Доступні розміри: S, M, L, XL</li>
-                                <li>Колір: чорний</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="product-details-actions">
-                            <div class="quantity-selector">
-                                <button class="quantity-btn minus">-</button>
-                                <span class="quantity">1</span>
-                                <button class="quantity-btn plus">+</button>
+                
+                <div class="product-grid">
+                    <div class="product-card level-bronze" data-id="1" id="product-details-trigger">
+                        <img src="img/2.png" alt="Футболка Solus" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">Футболка Solus</div>
+                            <div class="product-price">
+                                <div class="price">
+                                    200
+                                    <span class="sc-icon"></span>
+                                </div>
+                                <button class="add-to-cart-btn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                </button>
                             </div>
-                            <button class="add-to-cart-detail-btn">Додати в кошик</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Модальное окно для корзины -->
-        <div class="modal" id="cart-modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title">Кошик</div>
-                    <div class="modal-close">&times;</div>
-                </div>
-                <div class="modal-body">
-                    <div class="cart-items">
-                        <!-- Элементы корзины будут добавляться динамически -->
-                    </div>
-                    <div class="cart-summary">
-                        <div class="summary-row">
-                            <span>Всього:</span>
-                            <span class="total-price">0 SC</span>
-                        </div>
-                        <button class="checkout-btn">Оформити замовлення</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Модальное окно для перевода SC -->
-        <div class="modal" id="transfer-modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title">Переказ SC</div>
-                    <div class="modal-close">&times;</div>
-                </div>
-                <div class="modal-body">
-                    <div class="transfer-form">
-                        <div class="form-group">
-                            <label for="recipient">Отримувач:</label>
-                            <input type="text" class="form-control" id="recipient" placeholder="Ім'я користувача">
-                        </div>
-                        <div class="form-group">
-                            <label for="amount">Кількість SC:</label>
-                            <input type="number" class="form-control" id="amount" min="1" max="1250" value="100">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Повідомлення:</label>
-                            <textarea class="form-control" id="message" placeholder="Необов'язково"></textarea>
-                        </div>
-                        <button class="send-coins-btn">Надіслати</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Модальное окно для информации об уровнях -->
-        <div class="modal" id="level-info-modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title">Інформація про рівні</div>
-                    <div class="modal-close">&times;</div>
-                </div>
-                <div class="modal-body">
-                    <div class="level-info-item">
-                        <div class="level-info-header level-bronze">
-                            Бронзовий рівень (0 - 2000 SC)
-                        </div>
-                        <div class="level-info-desc">
-                            Початковий рівень для всіх співробітників. Доступ до базових товарів у маркетплейсі.
-                        </div>
-                    </div>
-                    <div class="level-info-item">
-                        <div class="level-info-header level-silver">
-                            Срібний рівень (2000 - 5000 SC)
-                        </div>
-                        <div class="level-info-desc">
-                            Відкриває доступ до товарів середньої вартості та спеціальних пропозицій.
-                        </div>
-                    </div>
-                    <div class="level-info-item">
-                        <div class="level-info-header level-gold">
-                            Золотий рівень (5000 - 10000 SC)
-                        </div>
-                        <div class="level-info-desc">
-                            Доступ до преміальних товарів та ексклюзивних заходів компанії.
-                        </div>
-                    </div>
-                    <div class="level-info-item">
-                        <div class="level-info-header level-diamond">
-                            Діамантовий рівень (10000+ SC)
-                        </div>
-                        <div class="level-info-desc">
-                            Найвищий рівень з доступом до всіх товарів та спеціальних привілеїв.
                         </div>
                     </div>
                     
-                    <div class="level-progress">
-                        <div class="progress-fill" style="width: 65%;"></div>
-                    </div>
-                    <div class="progress-text">
-                        <span>Ваш прогрес: 1250 / 2000 SC</span>
-                    </div>
-                    <button class="back-btn">Назад</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Модальное окно для информации о приложении -->
-        <div class="modal" id="about-app-modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title">Про додаток</div>
-                    <div class="modal-close">&times;</div>
-                </div>
-                <div class="modal-body">
-                    <p>Solus Marketplace v1.0.2</p>
-                    <p>Розроблено у 2023 році</p>
-                    <p>© Solus Company</p>
-                    <p style="margin-top: 20px;">Всі права захищені.</p>
-                    <button class="back-btn">Назад</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Модальное окно для отправки фидбека -->
-        <div class="modal" id="feedback-modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title">Залишити Фідбек</div>
-                    <div class="modal-close">&times;</div>
-                </div>
-                <div class="modal-body">
-                    <div class="feedback-form">
-                        <div class="form-group">
-                            <label for="feedback-type">Тип фідбеку:</label>
-                            <select class="form-control" id="feedback-type">
-                                <option value="suggestion">Пропозиція</option>
-                                <option value="bug">Помилка</option>
-                                <option value="question">Питання</option>
-                                <option value="other">Інше</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="feedback-text">Ваш фідбек:</label>
-                            <textarea class="form-control" id="feedback-text" placeholder="Опишіть ваші думки, пропозиції або проблеми..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="feedback-rating">Оцінка додатку (необов'язково):</label>
-                            <div class="rating-stars">
-                                <span class="star" data-rating="1">★</span>
-                                <span class="star" data-rating="2">★</span>
-                                <span class="star" data-rating="3">★</span>
-                                <span class="star" data-rating="4">★</span>
-                                <span class="star" data-rating="5">★</span>
-                                <input type="hidden" id="feedback-rating" value="0">
+                    <div class="product-card level-bronze" data-id="2">
+                        <img src="img/3.png" alt="Кружка брендована" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">Кружка брендована</div>
+                            <div class="product-price">
+                                <div class="price">
+                                    150
+                                    <span class="sc-icon"></span>
+                                </div>
+                                <button class="add-to-cart-btn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
-                        <button class="send-feedback-btn">Надіслати</button>
+                    </div>
+                    
+                    <div class="product-card level-gold" data-id="4">
+                        <img src="img/5.png" alt="Павербанк 10000 mAh" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">Павербанк 10000 mAh</div>
+                            <div class="product-price">
+                                <div class="price">
+                                    1200
+                                    <span class="sc-icon"></span>
+                                </div>
+                                <button class="add-to-cart-btn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card level-diamond" data-id="5">
+                        <img src="img/6.png" alt="Навушники бездротові" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">Навушники бездротові</div>
+                            <div class="product-price">
+                                <div class="price">
+                                    2500
+                                    <span class="sc-icon"></span>
+                                </div>
+                                <button class="add-to-cart-btn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Информация без заголовка -->
+            <div id="info" class="page">
+                <div class="appbar" style="display: none;">
+                    <!-- Скрываем аппбар с заголовком -->
+                    <div class="appbar-title">Інформація</div>
+                </div>
+                
+                <div class="info-cards">
+                    <div class="info-card" id="about-solus-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 8v4"></path>
+                                <path d="M12 16h.01"></path>
+                            </svg>
+                        </div>
+                        <div class="info-card-title">Що таке Солус Коін</div>
+                    </div>
+                    
+                    <div class="info-card" id="levels-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="info-card-title">Рівні користувачів</div>
+                    </div>
+                    
+                    <div class="info-card" id="how-to-get-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <div class="info-card-title">Як отримати SC</div>
+                    </div>
+                </div>
+                
+                <div class="feedback-section">
+                    <div class="feedback-content">
+                        <button class="feedback-button" id="feedback-trigger">
+                            <span class="icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    <line x1="9" y1="9" x2="15" y2="9"></line>
+                                    <line x1="9" y1="13" x2="15" y2="13"></line>
+                                </svg>
+                            </span>
+                            <span>Залишити Фідбек</span>
+                        </button>
+                        <div class="feedback-desc">
+                            Допоможіть нам покращити додаток
+                        </div>
+                    </div>
+                    <img src="img/solcat.png" alt="Solus Cat" class="solcat-image">
+                </div>
+            </div>
+            
+            <!-- Нижняя навигация -->
+            <div class="bottom-nav">
+                <div class="nav-button active" data-target="profile">
+                    <div class="icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="label">Профіль</div>
+                </div>
+                <div class="nav-button" data-target="marketplace">
+                    <div class="icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                    </div>
+                    <div class="label">Маркет</div>
+                </div>
+                <div class="nav-button" data-target="info">
+                    <div class="icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                    </div>
+                    <div class="label">Інфо</div>
+                </div>
+                <div class="nav-button" id="admin-button">
+                    <div class="icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </div>
+                    <div class="label">Адмін</div>
+                </div>
+            </div>
+            
+            <!-- Модальное окно для деталей товара -->
+            <div class="modal" id="product-details-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">Деталі товару</div>
+                        <div class="modal-close">&times;</div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="product-details-content">
+                            <img src="img/2.png" class="product-details-main-img" id="main-product-image" alt="Товар">
+                            
+                            <div class="product-details-thumbnails">
+                                <img src="img/2.png" class="product-thumbnail active" data-img="img/2.png" alt="Вигляд 1">
+                                <img src="img/3.png" class="product-thumbnail" data-img="img/3.png" alt="Вигляд 2">
+                                <img src="img/4.png" class="product-thumbnail" data-img="img/4.png" alt="Вигляд 3">
+                            </div>
+                            
+                            <h2 class="product-details-name">Футболка Solus</h2>
+                            <div class="product-details-level level-bronze">Бронзовий рівень</div>
+                            <div class="product-details-price">200 SC</div>
+                            
+                            <div class="product-details-description">
+                                <p>Стильна футболка з логотипом компанії Solus.</p>
+                                <p>Характеристики:</p>
+                                <ul>
+                                    <li>100% бавовна</li>
+                                    <li>Доступні розміри: S, M, L, XL</li>
+                                    <li>Колір: чорний</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="product-details-actions">
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn minus">-</button>
+                                    <span class="quantity">1</span>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart-detail-btn">Додати в кошик</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Модальное окно для корзины -->
+            <div class="modal" id="cart-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">Кошик</div>
+                        <div class="modal-close">&times;</div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="cart-items">
+                            <!-- Элементы корзины будут добавляться динамически -->
+                        </div>
+                        <div class="cart-summary">
+                            <div class="summary-row">
+                                <span>Всього:</span>
+                                <span class="total-price">0 SC</span>
+                            </div>
+                            <button class="checkout-btn">Оформити замовлення</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Модальное окно для перевода SC -->
+            <div class="modal" id="transfer-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">Переказ SC</div>
+                        <div class="modal-close">&times;</div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="transfer-form">
+                            <div class="form-group">
+                                <label for="recipient">Отримувач:</label>
+                                <input type="text" class="form-control" id="recipient" placeholder="Ім'я користувача">
+                            </div>
+                            <div class="form-group">
+                                <label for="amount">Кількість SC:</label>
+                                <input type="number" class="form-control" id="amount" min="1" max="1250" value="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Повідомлення:</label>
+                                <textarea class="form-control" id="message" placeholder="Необов'язково"></textarea>
+                            </div>
+                            <button class="send-coins-btn">Надіслати</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Модальное окно для информации об уровнях -->
+            <div class="modal" id="level-info-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">Інформація про рівні</div>
+                        <div class="modal-close">&times;</div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="level-info-item">
+                            <div class="level-info-header level-bronze">
+                                Бронзовий рівень (0 - 2000 SC)
+                            </div>
+                            <div class="level-info-desc">
+                                Початковий рівень для всіх співробітників. Доступ до базових товарів у маркетплейсі.
+                            </div>
+                        </div>
+                        <div class="level-info-item">
+                            <div class="level-info-header level-silver">
+                                Срібний рівень (2000 - 5000 SC)
+                            </div>
+                            <div class="level-info-desc">
+                                Відкриває доступ до товарів середньої вартості та спеціальних пропозицій.
+                            </div>
+                        </div>
+                        <div class="level-info-item">
+                            <div class="level-info-header level-gold">
+                                Золотий рівень (5000 - 10000 SC)
+                            </div>
+                            <div class="level-info-desc">
+                                Доступ до преміальних товарів та ексклюзивних заходів компанії.
+                            </div>
+                        </div>
+                        <div class="level-info-item">
+                            <div class="level-info-header level-diamond">
+                                Діамантовий рівень (10000+ SC)
+                            </div>
+                            <div class="level-info-desc">
+                                Найвищий рівень з доступом до всіх товарів та спеціальних привілеїв.
+                            </div>
+                        </div>
+                        
+                        <div class="level-progress">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>Ваш прогрес: 1250 / 2000 SC</span>
+                        </div>
+                        <button class="back-btn">Назад</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Модальное окно для информации о приложении -->
+            <div class="modal" id="about-app-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">Про додаток</div>
+                        <div class="modal-close">&times;</div>
+                    </div>
+                    <div class="modal-body">
+                        <p>Solus Marketplace v1.0.2</p>
+                        <p>Розроблено у 2023 році</p>
+                        <p>© Solus Company</p>
+                        <p style="margin-top: 20px;">Всі права захищені.</p>
+                        <button class="back-btn">Назад</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Модальное окно для отправки фидбека -->
+            <div class="modal" id="feedback-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">Залишити Фідбек</div>
+                        <div class="modal-close">&times;</div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="feedback-form">
+                            <div class="form-group">
+                                <label for="feedback-type">Тип фідбеку:</label>
+                                <select class="form-control" id="feedback-type">
+                                    <option value="suggestion">Пропозиція</option>
+                                    <option value="bug">Помилка</option>
+                                    <option value="question">Питання</option>
+                                    <option value="other">Інше</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedback-text">Ваш фідбек:</label>
+                                <textarea class="form-control" id="feedback-text" placeholder="Опишіть ваші думки, пропозиції або проблеми..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedback-rating">Оцінка додатку (необов'язково):</label>
+                                <div class="rating-stars">
+                                    <span class="star" data-rating="1">★</span>
+                                    <span class="star" data-rating="2">★</span>
+                                    <span class="star" data-rating="3">★</span>
+                                    <span class="star" data-rating="4">★</span>
+                                    <span class="star" data-rating="5">★</span>
+                                    <input type="hidden" id="feedback-rating" value="0">
+                                </div>
+                            </div>
+                            <button class="send-feedback-btn">Надіслати</button>
+                        </div>
                     </div>
                 </div>
             </div>

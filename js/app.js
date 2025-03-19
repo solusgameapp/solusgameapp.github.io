@@ -1,6 +1,49 @@
-// Инициализация телеграм мини-приложения
-let tg = window.Telegram.WebApp;
-tg.expand();
+// Инициализация приложения
+document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация Telegram WebApp
+    if (window.Telegram && window.Telegram.WebApp) {
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Разворачиваем WebApp на весь экран
+        
+        // Устанавливаем тему
+        document.documentElement.classList.add(tg.colorScheme);
+        
+        // Анимируем появление приложения
+        animateAppEntrance();
+    }
+    
+    // Настройка обработчиков навигации
+    setupNavigation();
+    
+    // Настройка маркетплейса
+    setupMarketplace();
+    
+    // Настройка профиля
+    setupProfile();
+    
+    // Настройка инфо-раздела
+    setupInfo();
+    
+    // Настройка модальных окон
+    setupModals();
+    
+    // Настройка корзины
+    setupCart();
+});
+
+// Анимация появления приложения
+function animateAppEntrance() {
+    const app = document.getElementById('app');
+    app.style.opacity = '0';
+    app.style.transform = 'translateY(20px)';
+    
+    // Плавное появление
+    setTimeout(() => {
+        app.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        app.style.opacity = '1';
+        app.style.transform = 'translateY(0)';
+    }, 100);
+}
 
 // Основная функциональность приложения
 document.addEventListener('DOMContentLoaded', function() {
@@ -101,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Настройка модальных окон
 function setupModals() {
     // Модальное окно с информацией об уровнях
-    setupModal('level-info-modal', '.user-level', '.modal-close, .back-btn');
+    setupModal('level-info-modal', '#level-info-trigger', '.modal-close, .back-btn');
     
     // Модальное окно с деталями товара
     setupModal('product-details-modal', '#product-details-trigger', '.modal-close');
@@ -114,6 +157,9 @@ function setupModals() {
     
     // Модальное окно о приложении
     setupModal('about-app-modal', '#about-app-trigger', '.modal-close, .back-btn');
+    
+    // Модальное окно для отправки фидбека
+    setupModal('feedback-modal', '#feedback-trigger', '.modal-close');
 }
 
 // Функция настройки модального окна
@@ -217,6 +263,7 @@ function setupCart() {
         appContainer.appendChild(animationElement);
         
         // Анимируем корзину
+        const cartIcon = document.querySelector('.cart-icon');
         cartIcon.classList.add('item-added');
         
         // Удаляем элемент после анимации
@@ -645,4 +692,270 @@ style.textContent = `
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
+
+// Настройка профиля
+function setupProfile() {
+    // Обработчик для прогресс-бара уровней
+    const levelProgressBar = document.getElementById('level-info-trigger');
+    if (levelProgressBar) {
+        levelProgressBar.addEventListener('click', () => {
+            const levelInfoModal = document.getElementById('level-info-modal');
+            if (levelInfoModal) {
+                levelInfoModal.classList.add('active');
+                const modalContent = levelInfoModal.querySelector('.modal-content');
+                if (modalContent) {
+                    modalContent.style.opacity = '0';
+                    modalContent.style.transform = 'translateY(20px) scale(0.95)';
+                    setTimeout(() => {
+                        modalContent.style.opacity = '1';
+                        modalContent.style.transform = 'translateY(0) scale(1)';
+                    }, 50);
+                }
+            }
+        });
+    }
+
+    // Обработчик для кнопки "Переглянути всі"
+    const viewAllButton = document.getElementById('view-all-transactions');
+    if (viewAllButton) {
+        viewAllButton.addEventListener('click', () => {
+            // Проверяем, существует ли модальное окно для всех транзакций
+            let transactionsModal = document.getElementById('all-transactions-modal');
+            
+            // Если нет, создаем его
+            if (!transactionsModal) {
+                transactionsModal = document.createElement('div');
+                transactionsModal.id = 'all-transactions-modal';
+                transactionsModal.className = 'modal';
+                
+                // Создаем контент модального окна
+                transactionsModal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title">Всі транзакції</div>
+                            <div class="modal-close">&times;</div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="all-transactions-list">
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <div class="transaction-title">Річниця в компанії</div>
+                                        <div class="transaction-date">15.05.2023</div>
+                                    </div>
+                                    <div class="transaction-amount positive">+500 SC</div>
+                                </div>
+                                
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <div class="transaction-title">Придбання: Футболка Solus</div>
+                                        <div class="transaction-date">20.05.2023</div>
+                                    </div>
+                                    <div class="transaction-amount negative">-200 SC</div>
+                                </div>
+                                
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <div class="transaction-title">Бонус за проект</div>
+                                        <div class="transaction-date">01.06.2023</div>
+                                    </div>
+                                    <div class="transaction-amount positive">+300 SC</div>
+                                </div>
+                                
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <div class="transaction-title">День народження</div>
+                                        <div class="transaction-date">10.07.2023</div>
+                                    </div>
+                                    <div class="transaction-amount positive">+400 SC</div>
+                                </div>
+                                
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <div class="transaction-title">Придбання: Кружка</div>
+                                        <div class="transaction-date">15.07.2023</div>
+                                    </div>
+                                    <div class="transaction-amount negative">-150 SC</div>
+                                </div>
+                                
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <div class="transaction-title">Бонус за відгук</div>
+                                        <div class="transaction-date">28.07.2023</div>
+                                    </div>
+                                    <div class="transaction-amount positive">+100 SC</div>
+                                </div>
+                                
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <div class="transaction-title">Участь у заході</div>
+                                        <div class="transaction-date">10.08.2023</div>
+                                    </div>
+                                    <div class="transaction-amount positive">+300 SC</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Добавляем модальное окно в приложение
+                document.getElementById('app').appendChild(transactionsModal);
+                
+                // Настраиваем закрытие модального окна
+                const closeButton = transactionsModal.querySelector('.modal-close');
+                closeButton.addEventListener('click', () => {
+                    transactionsModal.classList.remove('active');
+                });
+                
+                // Закрытие при клике вне модального окна
+                transactionsModal.addEventListener('click', (e) => {
+                    if (e.target === transactionsModal) {
+                        transactionsModal.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Показываем модальное окно
+            transactionsModal.classList.add('active');
+        });
+    }
+}
+
+// Добавляем обработчики для выпадающего меню фильтров
+document.getElementById('filter-trigger').addEventListener('click', function() {
+    const dropdown = document.getElementById('filter-dropdown');
+    
+    // Изменяем стиль отображения вместо удаления класса
+    if (dropdown.style.display === 'none' || !dropdown.style.display) {
+        dropdown.style.display = 'block';
+        dropdown.classList.add('active');
+    } else {
+        dropdown.classList.remove('active');
+        setTimeout(() => {
+            dropdown.style.display = 'none';
+        }, 300); // Соответствует длительности перехода
+    }
+});
+
+// Закрываем фильтры при клике вне их области
+document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('filter-dropdown');
+    const filterIcon = document.getElementById('filter-trigger');
+    
+    if (dropdown.style.display !== 'none' && !dropdown.contains(event.target) && !filterIcon.contains(event.target)) {
+        dropdown.classList.remove('active');
+        setTimeout(() => {
+            dropdown.style.display = 'none';
+        }, 300);
+    }
+});
+
+// Добавляем обработчики для новых карточек в разделе Инфо
+document.addEventListener('DOMContentLoaded', function() {
+    // Обработчик для карточек с информацией
+    const infoCards = document.querySelectorAll('#info .info-card');
+    
+    infoCards.forEach(card => {
+        card.querySelector('.info-card-header').addEventListener('click', function() {
+            // Проверяем, активна ли текущая карточка
+            const isActive = card.classList.contains('active');
+            
+            // Закрываем все карточки
+            infoCards.forEach(c => {
+                c.classList.remove('active');
+                c.querySelector('.toggle-icon').textContent = '▲';
+            });
+            
+            // Если карточка не была активна, активируем её
+            if (!isActive) {
+                card.classList.add('active');
+                card.querySelector('.toggle-icon').textContent = '▼';
+            }
+        });
+    });
+    
+    // Активируем первую карточку по умолчанию
+    if (infoCards.length > 0) {
+        infoCards[0].classList.add('active');
+        infoCards[0].querySelector('.toggle-icon').textContent = '▼';
+    }
+});
+
+// Добавляем обработчики для карточек в разделе Инфо
+document.addEventListener('DOMContentLoaded', function() {
+    // Обработчик для карточек с информацией
+    document.getElementById('about-solus-card').addEventListener('click', function() {
+        showInfoModal('Що таке Солус Коін', '<p>"Solus Coin" у контексті внутрішньої валюти для гейміфікації компанії, ймовірно, є корпоративною ініціативою, яка використовується для мотивації співробітників, заохочення певної поведінки або стимулювання продуктивності.</p>');
+    });
+    
+    document.getElementById('levels-card').addEventListener('click', function() {
+        let content = '<p>У системі є чотири рівні користувачів:</p>';
+        content += '<ul>';
+        content += '<li><span style="color: var(--level-bronze);">Бронзовий</span> – від 0 до 2000 SC</li>';
+        content += '<li><span style="color: var(--level-silver);">Срібний</span> – від 2000 до 5000 SC</li>';
+        content += '<li><span style="color: var(--level-gold);">Золотий</span> – від 5000 до 10000 SC</li>';
+        content += '<li><span style="color: var(--level-diamond);">Діамантовий</span> – від 10000 SC</li>';
+        content += '</ul>';
+        content += '<p>Певні товари доступні лише на відповідних рівнях.</p>';
+        
+        showInfoModal('Рівні користувачів', content);
+    });
+    
+    document.getElementById('how-to-get-card').addEventListener('click', function() {
+        let content = '<p>Є багато способів отримати Solus Coins:</p>';
+        content += '<ul>';
+        content += '<li>Виконання проектів – від 300 до 1000 SC</li>';
+        content += '<li>День народження – 400 SC</li>';
+        content += '<li>Річниця в компанії – 500 SC за кожен рік</li>';
+        content += '<li>Участь у внутрішніх заходах – від 100 до 500 SC</li>';
+        content += '<li>Подання ідей та пропозицій – від 50 до 200 SC</li>';
+        content += '</ul>';
+        
+        showInfoModal('Як отримати SC', content);
+    });
+    
+    // Функция для отображения модального окна с информацией
+    function showInfoModal(title, content) {
+        // Если у нас уже есть модальное окно для информации
+        if (document.getElementById('info-content-modal')) {
+            document.getElementById('info-modal-title').textContent = title;
+            document.getElementById('info-modal-content').innerHTML = content;
+            document.getElementById('info-content-modal').classList.add('active');
+        } else {
+            // Создаем новое модальное окно
+            let modal = document.createElement('div');
+            modal.id = 'info-content-modal';
+            modal.className = 'modal';
+            
+            let modalContent = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title" id="info-modal-title">${title}</div>
+                        <div class="modal-close">&times;</div>
+                    </div>
+                    <div class="modal-body">
+                        <div id="info-modal-content">${content}</div>
+                        <button class="back-btn">Назад</button>
+                    </div>
+                </div>
+            `;
+            
+            modal.innerHTML = modalContent;
+            document.querySelector('#app').appendChild(modal);
+            
+            // Добавляем обработчики событий
+            modal.querySelector('.modal-close').addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+            
+            modal.querySelector('.back-btn').addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+            
+            // Активируем модальное окно
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+        }
+    }
+}); 
