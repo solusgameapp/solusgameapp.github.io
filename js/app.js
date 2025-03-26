@@ -543,68 +543,57 @@ function setupTransferFunctionality() {
 
 // Функционал поиска в маркетплейсе
 function setupSearchFunctionality() {
-    const searchInput = document.querySelector('.marketplace-search');
-    const productCards = document.querySelectorAll('.product-card');
-    
-    if (!searchInput) return;
-    
-    searchInput.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase().trim();
-        
-        // Если поле поиска пустое, показываем все товары
-        if (searchTerm === '') {
-            productCards.forEach(card => {
-                card.style.display = '';
-            });
-            return;
-        }
-        
-        // Фильтруем товары по названию
-        productCards.forEach(card => {
-            const productName = card.querySelector('.product-name').textContent.toLowerCase();
-            const productLevel = card.querySelector('.product-level').textContent.toLowerCase();
+    const searchTrigger = document.getElementById('search-trigger');
+    const searchPanel = document.querySelector('.search-panel');
+    const searchInput = document.querySelector('.search-input');
+
+    if (searchTrigger && searchPanel && searchInput) {
+        searchTrigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            searchPanel.classList.toggle('active');
             
-            // Проверяем, содержит ли название товара или уровень введенный текст
-            if (productName.includes(searchTerm) || productLevel.includes(searchTerm)) {
-                // Показываем карточку с анимацией
-                card.style.display = '';
-                card.classList.add('fade-in');
+            if (searchPanel.classList.contains('active')) {
                 setTimeout(() => {
-                    card.classList.remove('fade-in');
-                }, 300);
-            } else {
-                // Скрываем карточку с анимацией
-                card.classList.add('fade-out');
-                setTimeout(() => {
-                    card.style.display = 'none';
-                    card.classList.remove('fade-out');
+                    searchInput.focus();
                 }, 300);
             }
         });
-    });
-    
-    // Добавляем стили для анимации
-    const style = document.createElement('style');
-    style.textContent += `
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(10px); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.3s ease forwards;
-        }
-        
-        .fade-out {
-            animation: fadeOut 0.3s ease forwards;
-        }
-    `;
-    document.head.appendChild(style);
+
+        // Обработка поискового запроса
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                const productName = card.querySelector('.product-name').textContent.toLowerCase();
+                const shouldShow = searchTerm === '' || productName.includes(searchTerm);
+                
+                if (shouldShow) {
+                    card.style.display = '';
+                    card.style.opacity = '1';
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+
+        // Закрытие при клике вне панели
+        document.addEventListener('click', function(e) {
+            if (!searchPanel.contains(e.target) && 
+                !searchTrigger.contains(e.target) && 
+                searchPanel.classList.contains('active')) {
+                searchPanel.classList.remove('active');
+            }
+        });
+
+        // Предотвращаем закрытие при клике на панель
+        searchPanel.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
 }
 
 // Функция для отображения уведомлений

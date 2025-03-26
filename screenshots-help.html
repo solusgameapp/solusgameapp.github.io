@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solus Marketplace - Помощник для скриншотов</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #17212b;
+            color: #ffffff;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3 {
+            color: #5ebbf0;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 20px 0;
+        }
+        
+        .screens-section {
+            margin-bottom: 30px;
+        }
+        
+        .screen-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .screen-item {
+            background-color: #232e3c;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .screen-link {
+            color: #5ebbf0;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            transition: transform 0.2s;
+        }
+        
+        .screen-link:hover {
+            transform: scale(1.05);
+        }
+        
+        .note {
+            background-color: #232e3c;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .instruction {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .instruction ol {
+            padding-left: 20px;
+        }
+        
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+        
+        .important {
+            color: #ff3b30;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Solus Marketplace - UI/UX</h1>
+    <p>Это инструмент для создания скриншотов UI/UX дизайна Telegram мини-приложения "Solus Marketplace".</p>
+    
+    <div class="note">
+        <h3 class="mb-10">Примечание:</h3>
+        <p>Для правильного отображения всех экранов необходимо добавить соответствующие изображения в папку <code>img/</code>, как указано в README.md</p>
+        <p class="important">Для корректного отображения на iPhone, используйте режим эмуляции мобильного устройства в инструментах разработчика (DevTools).</p>
+    </div>
+    
+    <div class="instruction">
+        <h3 class="mb-10">Как делать скриншоты:</h3>
+        <ol>
+            <li>Откройте нужный экран, используя ссылки ниже</li>
+            <li>Используйте DevTools для эмуляции iPhone (F12 → кнопка "Toggle device toolbar")</li>
+            <li>Сделайте скриншот (на Mac: Cmd+Shift+4, на Windows: Win+Shift+S)</li>
+            <li>Импортируйте скриншоты в Figma для создания прототипа</li>
+        </ol>
+    </div>
+    
+    <hr>
+    
+    <div class="screens-section">
+        <h2>Основные экраны</h2>
+        <ul class="screen-list">
+            <li class="screen-item">
+                <a href="index.html" class="screen-link" target="_blank">Профиль (главный экран)</a>
+            </li>
+            <li class="screen-item">
+                <a href="index.html#marketplace" class="screen-link" target="_blank">Маркетплейс</a>
+            </li>
+            <li class="screen-item">
+                <a href="index.html#info" class="screen-link" target="_blank">Информация</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="screens-section">
+        <h2>Дополнительные экраны</h2>
+        <ul class="screen-list">
+            <li class="screen-item">
+                <a href="index.html#cart" class="screen-link" target="_blank">Корзина</a>
+            </li>
+            <li class="screen-item">
+                <a href="index.html#product-details" class="screen-link" target="_blank">Детали товара</a>
+            </li>
+            <li class="screen-item">
+                <a href="index.html#transfer" class="screen-link" target="_blank">Перевод коинов</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="screens-section">
+        <h2>Админ-панель</h2>
+        <ul class="screen-list">
+            <li class="screen-item">
+                <a href="admin.html" class="screen-link" target="_blank">Главный экран админ-панели</a>
+            </li>
+            <li class="screen-item">
+                <a href="admin.html#tasks-management" class="screen-link" target="_blank">Управление задачами</a>
+            </li>
+            <li class="screen-item">
+                <a href="admin.html#users-management" class="screen-link" target="_blank">Управление пользователями</a>
+            </li>
+            <li class="screen-item">
+                <a href="admin.html#marketplace-management" class="screen-link" target="_blank">Управление маркетплейсом</a>
+            </li>
+            <li class="screen-item">
+                <a href="admin.html#auto-rewards" class="screen-link" target="_blank">Автоматические начисления</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="screens-section">
+        <h2>Модальные окна</h2>
+        <p>Для отображения модальных окон необходимо нажать на соответствующий элемент:</p>
+        <ul class="screen-list">
+            <li class="screen-item">
+                <a href="index.html" class="screen-link" target="_blank">Информация об уровнях (нажмите на "Бронзовий")</a>
+            </li>
+            <li class="screen-item">
+                <a href="admin.html#users-management" class="screen-link" target="_blank">Добавление коинов (нажмите на "+")</a>
+            </li>
+            <li class="screen-item">
+                <a href="admin.html#marketplace-management" class="screen-link" target="_blank">Редактирование товара (нажмите на ✏️)</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html> 

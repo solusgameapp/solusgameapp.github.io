@@ -295,150 +295,102 @@ button:active {
 
 /* Новая структура профиля с интегрированным прогресс-баром */
 .profile-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 0;
+    padding: 12px 16px;
 }
 
 .profile-header {
     display: flex;
-    align-items: stretch;
-    width: 100%;
+    align-items: center;
+    justify-content: space-between; /* Изменено с flex-start на space-between */
     gap: 12px;
-    padding: 0 12px;
-    margin-bottom: 5px;
-}
-
-.token-container {
-    display: flex;
-    align-items: center;
-    position: relative;
-    background: rgba(205, 127, 50, 0.1);
-    border-radius: 18px;
-    padding: 16px 20px;
-    flex: 1;
-    border: 1px solid rgba(205, 127, 50, 0.2);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.token-container:hover {
-    background: rgba(205, 127, 50, 0.15);
-    border-color: rgba(205, 127, 50, 0.3);
-    transform: translateY(-2px);
-}
-
-.token-container:active {
-    transform: scale(0.98);
-    background: rgba(205, 127, 50, 0.2);
-    border-color: rgba(205, 127, 50, 0.4);
-}
-
-.token-icon {
-    width: 50px;
-    height: 50px;
-    margin-right: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    background: var(--gradient-bronze);
-    border-radius: 50%;
-    box-shadow: 0 6px 12px rgba(205, 127, 50, 0.3);
-}
-
-.token-info {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.token-amount {
-    font-size: 28px;
-    font-weight: 700;
-    background: var(--gradient-bronze);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.token-label {
-    width: 24px;
-    height: 24px;
-    background-image: url('../img/sc.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-left: 2px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
 }
 
 .user-container {
     display: flex;
     align-items: center;
-    background: rgba(108, 92, 231, 0.15);
-    border-radius: 18px;
-    padding: 16px 20px;
-    flex: 1;
-    border: 1px solid rgba(108, 92, 231, 0.25);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+    gap: 12px;
+    padding: 0;
+    cursor: default;
 }
 
-.user-container:hover {
-    background: rgba(108, 92, 231, 0.2);
-    border-color: rgba(108, 92, 231, 0.35);
-    transform: translateY(-2px);
-}
-
+.user-container:hover,
 .user-container:active {
-    transform: scale(0.98);
-    background: rgba(108, 92, 231, 0.25);
-    border-color: rgba(108, 92, 231, 0.45);
+    background: none;
+    transform: none;
 }
 
 .user-avatar {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    overflow: visible;
-    margin-left: 15px;
+    width: 36px;
+    height: 36px;
     position: relative;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.user-avatar::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    background: var(--accent-gradient);
     border-radius: 50%;
-    z-index: -1;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
 .user-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid var(--tg-theme-bg-color);
-    transition: transform 0.3s ease;
 }
 
 .user-info {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: calc(100% - 80px);
+    align-items: center;
+    gap: 8px;
+    order: 2;
+    flex-direction: row; /* Добавляем это */
 }
 
 .user-name {
-    font-size: 22px;
-    font-weight: 600;
-    text-align: right;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+    margin-right: auto;
+    margin-left: 0; /* Добавляем это чтобы прижать влево */
+}
+
+.token-container {
+    display: flex;
+    flex-direction: column; /* Добавляем это */
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    cursor: default;
+    order: 1;
+}
+
+.token-amount-wrapper { /* Добавляем новый класс для обертки */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.token-container:hover,
+.token-container:active {
+    background: none;
+    transform: none;
+}
+
+.token-icon {
+    width: 16px;
+    height: 16px;
+    color: #FFB156;
+}
+
+.token-amount {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFB156;
+}
+
+.token-label {
+    font-size: 12px;
+    color: #FFB156;
+    margin-top: 2px;
 }
 
 .user-level {
@@ -1911,13 +1863,18 @@ select, input[type="checkbox"] {
 
 .token-container {
     display: flex;
+    flex-direction: column; /* Добавляем это */
     align-items: center;
-    position: relative;
-    transition: transform 0.3s var(--animation-bounce);
-    background: rgba(128, 90, 213, 0.08);
-    padding: 10px 15px;
-    border-radius: 16px;
-    border: 1px solid rgba(162, 155, 254, 0.15);
+    gap: 4px;
+    padding: 0;
+    cursor: default;
+    order: 1;
+}
+
+.token-amount-wrapper { /* Добавляем новый класс для обертки */
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .token-icon {
@@ -1943,9 +1900,11 @@ select, input[type="checkbox"] {
 }
 
 .user-name {
-    font-size: 19px;
-    font-weight: 600;
-    margin-bottom: 6px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    margin-right: auto;
+    margin-left: 100px; /* Добавляем это чтобы прижать влево */
 }
 
 .user-level {
@@ -2896,4 +2855,326 @@ select, input[type="checkbox"] {
     height: 110px;
     max-width: 110px;
     object-fit: contain;
+}
+
+/* Обновляем стили для шапки маркетплейса */
+.marketplace-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+.marketplace-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--tg-theme-text-color);
+}
+
+.marketplace-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.action-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--tg-theme-text-color);
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-icon:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.action-icon:active {
+    transform: translateY(0);
+}
+
+/* Добавляем стили для поисковой панели */
+.search-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--tg-theme-bg-color, #ffffff);
+    padding: 12px 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.search-panel.active {
+    transform: translateY(0);
+}
+
+.search-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--tg-theme-text-color, #fff);
+    font-size: 16px;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Обновляем стили для инфо-карточек */
+#info .info-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px;
+}
+
+#info .info-card {
+    background: var(--tg-theme-bg-color);
+    border-radius: 20px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(162, 155, 254, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+#info .info-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(108, 92, 231, 0.1);
+    color: var(--tg-theme-text-color);
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+#info .info-card-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--tg-theme-text-color);
+    margin-bottom: 12px;
+}
+
+#info .info-card-content {
+    display: block;
+    opacity: 1;
+    transform: none;
+    position: relative;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#info .info-card-content p {
+    margin: 12px 0;
+    color: var(--tg-theme-hint);
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+#info .info-card-content ul {
+    padding-left: 20px;
+    margin: 10px 0;
+    color: var(--tg-theme-hint);
+}
+
+#info .info-card-content li {
+    margin-bottom: 8px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Удаляем ненужные стили */
+#info .info-card-header::after,
+#info .toggle-icon,
+#info .info-card.active .info-card-header,
+#info .info-card.active .info-card-content {
+    display: none;
+}
+
+#info .info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.15);
+    border-color: rgba(162, 155, 254, 0.3);
+}
+
+/* Обновляем стили для инфо-карточек */
+#info .info-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* По две карточки в строку */
+    gap: 12px;
+    padding: 12px;
+}
+
+#info .info-card {
+    background: var(--tg-theme-bg-color);
+    border-radius: 16px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(162, 155, 254, 0.2);
+    display: flex;
+    flex-direction: column;
+    height: auto; /* Убираем фиксированную высоту */
+}
+
+#info .info-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(108, 92, 231, 0.1);
+    color: var(--tg-theme-text-color);
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+#info .info-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--tg-theme-text-color);
+    margin-bottom: 8px;
+}
+
+#info .info-card-content {
+    display: block;
+    opacity: 1;
+    position: static;
+    padding: 0;
+    margin-top: 5px;
+    pointer-events: auto;
+    transform: none;
+    max-height: none;
+    overflow: visible;
+}
+
+#info .info-card-content p {
+    margin: 8px 0;
+    color: var(--tg-theme-hint);
+    line-height: 1.4;
+    font-size: 13px;
+}
+
+#info .info-card-content ul {
+    padding-left: 16px;
+    margin: 8px 0;
+    color: var(--tg-theme-hint);
+}
+
+#info .info-card-content li {
+    margin-bottom: 6px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+#info .info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(108, 92, 231, 0.15);
+    border-color: rgba(162, 155, 254, 0.3);
+}
+
+/* Обновляем стили для секции фидбека */
+#info .feedback-section {
+    margin: 12px;
+    margin-top: 5px;
+}
+
+/* Обновляем стили для инфо-карточек */
+#info .info-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 12px;
+}
+
+#info .info-card {
+    background: rgba(35, 46, 60, 0.5);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    backdrop-filter: blur(10px);
+}
+
+#info .info-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--accent-purple-light);
+}
+
+#info .info-card-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+}
+
+#info .info-card-content {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+    margin-top: 8px;
+    background: none; /* Убираем фон */
+}
+
+#info .info-card-content p {
+    margin: 0 0 8px 0;
+}
+
+#info .info-card-content .highlight {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+#info .info-card-content .amount {
+    color: #FFB156;
+    font-weight: 500;
+}
+
+.feedback-cat-image {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin: 20px auto;
+    display: block;
+}
+
+.feedback-form {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feedback-form textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(162, 155, 254, 0.2);
+    border-radius: 12px;
+    padding: 12px;
+    color: var(--tg-theme-text-color);
+    font-size: 14px;
+}
+
+.feedback-form textarea.form-control:focus {
+    border-color: rgba(162, 155, 254, 0.4);
+    outline: none;
 }
